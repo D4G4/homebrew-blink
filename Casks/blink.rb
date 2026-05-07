@@ -9,19 +9,12 @@ cask "blink" do
 
   depends_on macos: ">= :sonoma"
 
-  # Skip quarantine since app is unsigned (open source — verify code at github.com/D4G4/blink)
   app "Blink.app"
 
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-cr", "#{appdir}/Blink.app"],
-                   sudo: false
-  end
-
   caveats <<~EOS
-    After install/upgrade, you may need to re-grant Accessibility permission:
+    On first launch, macOS will show a Gatekeeper dialog — click Open.
+    Then grant Accessibility when prompted:
       System Settings → Privacy & Security → Accessibility → toggle Blink
-    This is required because the app binary changes on each update.
   EOS
 
   zap trash: [
