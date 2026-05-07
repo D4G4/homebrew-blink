@@ -1,6 +1,6 @@
 cask "blink" do
   version "1.0.0"
-  sha256 "97aedd8acb28139a40f1b2518db87d45761fd86fcca1dcf3fc30cfaa6d071390"
+  sha256 "ee39f4cf3283f8386e49491751c1a0688e426a926b76823f84b37ed67c193487"
 
   url "https://github.com/D4G4/blink/releases/download/v#{version}/Blink.dmg"
   name "Blink"
@@ -9,7 +9,14 @@ cask "blink" do
 
   depends_on macos: ">= :sonoma"
 
+  # Skip quarantine since app is unsigned (open source — verify code at github.com/D4G4/blink)
   app "Blink.app"
+
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-cr", "#{appdir}/Blink.app"],
+                   sudo: false
+  end
 
   zap trash: [
     "~/Library/Application Support/Blink",
