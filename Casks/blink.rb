@@ -18,6 +18,12 @@ cask "blink" do
                    sudo: false
   end
 
+  caveats <<~EOS
+    After install/upgrade, you may need to re-grant Accessibility permission:
+      System Settings → Privacy & Security → Accessibility → toggle Blink
+    This is required because the app binary changes on each update.
+  EOS
+
   zap trash: [
     "~/Library/Application Support/Blink",
     "~/Library/Preferences/com.blink.app.plist",
