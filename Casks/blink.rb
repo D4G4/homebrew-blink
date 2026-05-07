@@ -11,9 +11,14 @@ cask "blink" do
 
   app "Blink.app"
 
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-cr", "#{appdir}/Blink.app"],
+                   sudo: false
+  end
+
   caveats <<~EOS
-    On first launch, macOS will show a Gatekeeper dialog — click Open.
-    Then grant Accessibility when prompted:
+    Grant Accessibility when prompted:
       System Settings → Privacy & Security → Accessibility → toggle Blink
   EOS
 
