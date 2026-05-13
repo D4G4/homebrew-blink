@@ -24,6 +24,6 @@ cask "blink" do
 
   zap trash: [
     "~/Library/Application Support/Blink",
-    "~/Library/Preferences/com.blink.app.plist",
+    "~/Library/Preferences/com.blink20.app.plist",
   ]
 end
