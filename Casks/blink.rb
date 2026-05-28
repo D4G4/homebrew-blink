@@ -1,6 +1,6 @@
 cask "blink" do
-  version "3.3.5"
-  sha256 "9a5904b87c7eca56d4a2114d2a8bc16786e09ec299243367e561c92866348e4c"
+  version "4.0.2"
+  sha256 "db6bea70fad77fc1228cb8e59f9c9ee2b608db77f7751050e299e184ba4fac3b"
 
   url "https://github.com/D4G4/blink/releases/download/v#{version}/Blink.dmg"
   name "Blink"
@@ -11,11 +11,6 @@ cask "blink" do
 
   app "Blink.app"
 
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-cr", "#{appdir}/Blink.app"],
-                   sudo: false
-  end
 
   caveats <<~EOS
     Grant Accessibility when prompted:
