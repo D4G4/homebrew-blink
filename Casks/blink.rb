@@ -13,8 +13,8 @@ cask "blink" do
 
 
   caveats <<~EOS
-    Grant Accessibility when prompted:
-      System Settings → Privacy & Security → Accessibility → toggle Blink
+    Grant Input Monitoring when prompted:
+      System Settings → Privacy & Security → Input Monitoring → toggle Blink
   EOS
 
   zap trash: [
